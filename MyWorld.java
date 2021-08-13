@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    private GreenfootImage Würfel=new GreenfootImage(600,400);
+    private GreenfootImage image=new GreenfootImage(1200,800);
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -16,50 +16,67 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
-        //Würfel.drawLine(100,70,10,18);
-        //setBackground(Würfel);
-        Vektor P1 = new Vektor(-100,-100,-100);
-        Vektor P2 = new Vektor(-100,-100,100);
-        Vektor P3 = new Vektor(-100,100,100);
-        Vektor P4 = new Vektor(-100,100,-100);
-        Vektor P5 = new Vektor(100,100,-100);
-        Vektor P6 = new Vektor(100,100,100);
-        Vektor P7 = new Vektor(100,-100,-100);
-        Vektor P8 = new Vektor(100,-100,100);
+        super(1200, 800, 1); 
+        //image.drawLine(100,70,10,18);
+        //setBackground(image);
+        Vektor P1 = new Vektor(-200,-40,-40);
+        Vektor P2 = new Vektor(-200,-40,40);
+        Vektor P3 = new Vektor(-200,40,40);
+        Vektor P4 = new Vektor(-200,40,-40);
+        Vektor P5 = new Vektor(200,40,-40);
+        Vektor P6 = new Vektor(200,40,40);
+        Vektor P7 = new Vektor(200,-40,-40);
+        Vektor P8 = new Vektor(200,-40,40);
+        Vektor P9 = new Vektor(400,-100,100);
+        Vektor P10 = new Vektor(400,-100,-100);
+        Vektor P11 = new Vektor(400,100,100);
+        Vektor P12 = new Vektor(400,100,-100);
         Bildpunkt B1 = perspective(P1);
-        B1.koordinatenAusgeben(Würfel);
+        //B1.koordinatenAusgeben(image);
         Bildpunkt B2 = perspective(P2);
-        B2.koordinatenAusgeben(Würfel);
+        //B2.koordinatenAusgeben(image);
         Bildpunkt B3 = perspective(P3);
-        B3.koordinatenAusgeben(Würfel);
+        //B3.koordinatenAusgeben(image);
         Bildpunkt B4 = perspective(P4);
-        B4.koordinatenAusgeben(Würfel);
+        //B4.koordinatenAusgeben(image);
         Bildpunkt B5 = perspective(P5);
-        B5.koordinatenAusgeben(Würfel);
+        //B5.koordinatenAusgeben(image);
         Bildpunkt B6 = perspective(P6);
-        B6.koordinatenAusgeben(Würfel);
+        //B6.koordinatenAusgeben(image);
         Bildpunkt B7 = perspective(P7);
         Bildpunkt B8 = perspective(P8);
-        Würfel.drawLine(B1.x,B1.y,B2.x,B2.y);
-        Würfel.drawLine(B3.x,B3.y,B2.x,B2.y);
-        Würfel.drawLine(B1.x,B1.y,B4.x,B4.y);
-        Würfel.drawLine(B1.x,B1.y,B7.x,B7.y);
-        Würfel.drawLine(B8.x,B8.y,B2.x,B2.y);
-        Würfel.drawLine(B3.x,B3.y,B4.x,B4.y);
-        Würfel.drawLine(B8.x,B8.y,B7.x,B7.y);
-        Würfel.drawLine(B8.x,B8.y,B6.x,B6.y);
-        Würfel.drawLine(B3.x,B3.y,B6.x,B6.y);
-        Würfel.drawLine(B5.x,B5.y,B6.x,B6.y);
-        Würfel.drawLine(B5.x,B5.y,B7.x,B7.y);
-        Würfel.drawLine(B5.x,B5.y,B4.x,B4.y);
-        setBackground(Würfel);
+        Bildpunkt B9 = perspective(P9);
+        Bildpunkt B10 = perspective(P10);
+        Bildpunkt B11 = perspective(P11);
+        Bildpunkt B12 = perspective(P12);
+        image.drawLine(B9.x,B9.y,B11.x,B11.y);
+        image.drawLine(B9.x,B9.y,B10.x,B10.y);
+        image.drawLine(B11.x,B11.y,B6.x,B6.y);
+        image.drawLine(B10.x,B10.y,B7.x,B7.y);
+        image.drawLine(B9.x,B9.y,B8.x,B8.y);
+        image.drawLine(B1.x,B1.y,B2.x,B2.y);
+        image.drawLine(B3.x,B3.y,B2.x,B2.y);
+        image.drawLine(B1.x,B1.y,B4.x,B4.y);
+        image.drawLine(B1.x,B1.y,B7.x,B7.y);
+        image.drawLine(B8.x,B8.y,B2.x,B2.y);
+        image.drawLine(B3.x,B3.y,B4.x,B4.y);
+        image.drawLine(B8.x,B8.y,B7.x,B7.y);
+        image.drawLine(B8.x,B8.y,B6.x,B6.y);
+        image.drawLine(B3.x,B3.y,B6.x,B6.y);
+        image.setColor(Color.LIGHT_GRAY);
+        image.drawLine(B5.x,B5.y,B6.x,B6.y);
+        image.drawLine(B5.x,B5.y,B7.x,B7.y);
+        image.drawLine(B5.x,B5.y,B4.x,B4.y);
+        image.drawLine(B12.x,B12.y,B5.x,B5.y);
+        image.drawLine(B12.x,B12.y,B11.x,B11.y);
+        image.drawLine(B12.x,B12.y,B10.x,B10.y);
+        setBackground(image);
     }
     
     public Bildpunkt perspective(Vektor v)
     {
-        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + 14*Math.sqrt(5)+300;
-        double y1= 200-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z + 1/3*Math.sqrt(30));
+        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +250;
+        double y1= 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
         return new Bildpunkt((int) x1,(int) y1,v);
     }
 }
