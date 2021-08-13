@@ -19,18 +19,18 @@ public class MyWorld extends World
         super(1200, 800, 1); 
         //image.drawLine(100,70,10,18);
         //setBackground(image);
-        Vektor P1 = new Vektor(-200,-40,-40);
-        Vektor P2 = new Vektor(-200,-40,40);
-        Vektor P3 = new Vektor(-200,40,40);
-        Vektor P4 = new Vektor(-200,40,-40);
-        Vektor P5 = new Vektor(200,40,-40);
-        Vektor P6 = new Vektor(200,40,40);
-        Vektor P7 = new Vektor(200,-40,-40);
-        Vektor P8 = new Vektor(200,-40,40);
-        Vektor P9 = new Vektor(400,-100,100);
-        Vektor P10 = new Vektor(400,-100,-100);
-        Vektor P11 = new Vektor(400,100,100);
-        Vektor P12 = new Vektor(400,100,-100);
+        Vektor P1 = new Vektor(-200,-80,-80);
+        Vektor P2 = new Vektor(-200,-80,80);
+        Vektor P3 = new Vektor(-200,80,80);
+        Vektor P4 = new Vektor(-200,80,-80);
+        Vektor P5 = new Vektor(200,80,-80);
+        Vektor P6 = new Vektor(200,80,80);
+        Vektor P7 = new Vektor(200,-80,-80);
+        Vektor P8 = new Vektor(200,-80,80);
+        Vektor P9 = new Vektor(600,-200,200);
+        Vektor P10 = new Vektor(600,-200,-200);
+        Vektor P11 = new Vektor(600,200,200);
+        Vektor P12 = new Vektor(600,200,-200);
         Bildpunkt B1 = perspective(P1);
         //B1.koordinatenAusgeben(image);
         Bildpunkt B2 = perspective(P2);
@@ -75,7 +75,7 @@ public class MyWorld extends World
     
     public Bildpunkt perspective(Vektor v)
     {
-        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +250;
+        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +400;
         double y1= 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
         return new Bildpunkt((int) x1,(int) y1,v);
     }
