@@ -19,6 +19,9 @@ public class Vektor
         y=y1;
         z=z1;
     }
-
+    public Vektor multiplizieren(double zahl)
+    {
+        return new Vektor(x*zahl, y*zahl, z*zahl);
+    }
     
 }

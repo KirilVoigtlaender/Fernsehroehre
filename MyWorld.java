@@ -19,36 +19,25 @@ public class MyWorld extends World
         super(1200, 800, 1); 
         //image.drawLine(100,70,10,18);
         //setBackground(image);
-        Vektor P1 = new Vektor(-200,-80,-80);
-        Vektor P2 = new Vektor(-200,-80,80);
-        Vektor P3 = new Vektor(-200,80,80);
-        Vektor P4 = new Vektor(-200,80,-80);
-        Vektor P5 = new Vektor(200,80,-80);
-        Vektor P6 = new Vektor(200,80,80);
-        Vektor P7 = new Vektor(200,-80,-80);
-        Vektor P8 = new Vektor(200,-80,80);
-        Vektor P9 = new Vektor(600,-200,200);
-        Vektor P10 = new Vektor(600,-200,-200);
-        Vektor P11 = new Vektor(600,200,200);
-        Vektor P12 = new Vektor(600,200,-200);
-        Bildpunkt B1 = perspective(P1);
+        
+        Bildpunkt B1 = perspective(new Vektor(-200,-80,-80));
         //B1.koordinatenAusgeben(image);
-        Bildpunkt B2 = perspective(P2);
+        Bildpunkt B2 = perspective(new Vektor(-200,-80,80));
         //B2.koordinatenAusgeben(image);
-        Bildpunkt B3 = perspective(P3);
+        Bildpunkt B3 = perspective(new Vektor(-200,80,80));
         //B3.koordinatenAusgeben(image);
-        Bildpunkt B4 = perspective(P4);
+        Bildpunkt B4 = perspective(new Vektor(-200,80,-80));
         //B4.koordinatenAusgeben(image);
-        Bildpunkt B5 = perspective(P5);
+        Bildpunkt B5 = perspective(new Vektor(200,80,-80));
         //B5.koordinatenAusgeben(image);
-        Bildpunkt B6 = perspective(P6);
+        Bildpunkt B6 = perspective(new Vektor(200,80,80));
         //B6.koordinatenAusgeben(image);
-        Bildpunkt B7 = perspective(P7);
-        Bildpunkt B8 = perspective(P8);
-        Bildpunkt B9 = perspective(P9);
-        Bildpunkt B10 = perspective(P10);
-        Bildpunkt B11 = perspective(P11);
-        Bildpunkt B12 = perspective(P12);
+        Bildpunkt B7 = perspective(new Vektor(200,-80,-80));
+        Bildpunkt B8 = perspective( new Vektor(200,-80,80));
+        Bildpunkt B9 = perspective( new Vektor(600,-200,200));
+        Bildpunkt B10 = perspective(new Vektor(600,-200,-200));
+        Bildpunkt B11 = perspective(new Vektor(600,200,200));
+        Bildpunkt B12 = perspective(new Vektor(600,200,-200));
         image.drawLine(B9.x,B9.y,B11.x,B11.y);
         image.drawLine(B9.x,B9.y,B10.x,B10.y);
         image.drawLine(B11.x,B11.y,B6.x,B6.y);
@@ -71,9 +60,12 @@ public class MyWorld extends World
         image.drawLine(B12.x,B12.y,B11.x,B11.y);
         image.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(image);
+        
+        addObject(new Magnet(new Vektor(0,0,1),140),600,400);
+        addObject(new Magnet(new Vektor(0,1,0),140),600,400);
     }
     
-    public Bildpunkt perspective(Vektor v)
+    public static Bildpunkt perspective(Vektor v)
     {
         double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +400;
         double y1= 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
