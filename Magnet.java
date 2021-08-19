@@ -28,9 +28,14 @@ public class Magnet extends Actor
     public void draw()
     {
         Bildpunkt Pol1 = MyWorld.perspective(Lage.multiplizieren(abstand/2));
-        
         image.setColor(Color.RED);
-        image.drawOval(Pol1.x,Pol1.y,20,20);
+        image.drawOval(Pol1.x-10,Pol1.y-10,20,20);
+        //setImage(image);
+        Bildpunkt Pol2 = MyWorld.perspective(Lage.multiplizieren(-abstand/2));
+        image.setColor(Color.BLUE);
+        image.drawOval(Pol2.x-10,Pol2.y-10,20,20);
+        image.setColor(Color.ORANGE);
+        image.drawLine(Pol1.x,Pol1.y,Pol2.x,Pol2.y);
         setImage(image);
     }
 }
