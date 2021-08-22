@@ -40,7 +40,7 @@ public class MyWorld extends World
         Bildpunkt B10 = perspective(new Vektor(600,-200,-200));
         Bildpunkt B11 = perspective(new Vektor(600,200,200));
         Bildpunkt B12 = perspective(new Vektor(600,200,-200));
-        image.setColor(Color.BLACK);
+        
         image.drawLine(B9.x,B9.y,B11.x,B11.y);
         image.drawLine(B9.x,B9.y,B10.x,B10.y);
         image.drawLine(B11.x,B11.y,B6.x,B6.y);

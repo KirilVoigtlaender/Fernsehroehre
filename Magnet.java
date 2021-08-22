@@ -11,7 +11,7 @@ public class Magnet extends Actor
     private Vektor Lage;
     private double abstand;
     private GreenfootImage image=new GreenfootImage(1200,800);
-    private double magnetfeldstärke = 0;
+    private double magnetfeldstärke;
     private String name;
     private String erhöhen;
     private String verringern;
@@ -27,6 +27,8 @@ public class Magnet extends Actor
         this.erhöhen = erhöhen;
         this.verringern = verringern;
         this.maxBetrag = maxBetrag;
+        magnetfeldstärke= maxBetrag/2;
+        setImage(image);
         draw();
     }
     /**
@@ -35,8 +37,8 @@ public class Magnet extends Actor
      */
     public void act()
     {
-        draw();
         steuern();
+        draw();
     }
     public void draw()
     {
@@ -66,7 +68,7 @@ public class Magnet extends Actor
         image.drawLine(Pol1.x,Pol1.y,Pol2.x,Pol2.y);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(magnetfeldstärke),10,y);
-        setImage(image);
+        
     }
     public void steuern()
     {
