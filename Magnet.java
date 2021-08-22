@@ -22,15 +22,12 @@ public class Magnet extends Actor
     {
         Lage = v;
         this.abstand = abstand;
-        
         this.y = y;
         this.name = name;
         this.erhöhen = erhöhen;
         this.verringern = verringern;
         this.maxBetrag = maxBetrag;
-        
         draw();
-        
     }
     /**
      * Act - do whatever the Magnet wants to do. This method is called whenever
@@ -43,13 +40,27 @@ public class Magnet extends Actor
     }
     public void draw()
     {
+        Color farbepol1;
+        Color farbepol2;
+        int helligkeit;
         image.clear();
         Bildpunkt Pol1 = MyWorld.perspective(Lage.multiplizieren(abstand/2));
-        image.setColor(Color.RED);
+        Bildpunkt Pol2 = MyWorld.perspective(Lage.multiplizieren(-abstand/2));
+        helligkeit =(int) (-245 * Math.abs(magnetfeldstärke)/maxBetrag+250);
+        if(magnetfeldstärke>0)
+        {
+            farbepol1 = new Color(helligkeit,255,helligkeit);
+            farbepol2 = new Color(255,helligkeit,helligkeit);
+        }
+        else
+        {
+            farbepol1 = new Color(255,helligkeit,helligkeit);
+            farbepol2 = new Color(helligkeit,255,helligkeit);
+        }
+        image.setColor(farbepol1);
         image.fillOval(Pol1.x-10,Pol1.y-10,20,20);
         
-        Bildpunkt Pol2 = MyWorld.perspective(Lage.multiplizieren(-abstand/2));
-        image.setColor(Color.BLUE);
+        image.setColor(farbepol2);
         image.fillOval(Pol2.x-10,Pol2.y-10,20,20);
         image.setColor(Color.ORANGE);
         image.drawLine(Pol1.x,Pol1.y,Pol2.x,Pol2.y);
@@ -59,7 +70,6 @@ public class Magnet extends Actor
     }
     public void steuern()
     {
-        
         if(Greenfoot.isKeyDown(erhöhen))
         {
             magnetfeldstärke += 0.1;
