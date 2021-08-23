@@ -13,11 +13,11 @@ public class Vektor
     /**
      * Constructor for objects of class Vektor
      */
-    public Vektor(double x1,double y1,double z1)
+    public Vektor(double x,double y,double z)
     {
-        x=x1;
-        y=y1;
-        z=z1;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
     public Vektor multiplizieren(double zahl)
     {

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    private GreenfootImage image=new GreenfootImage(1200,800);
+    private GreenfootImage image = new GreenfootImage(1200,800);
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -71,7 +71,7 @@ public class MyWorld extends World
     public static Bildpunkt perspective(Vektor v)
     {
         double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +400;
-        double y1= 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
+        double y1 = 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
         return new Bildpunkt((int) x1,(int) y1,v);
     }
 }

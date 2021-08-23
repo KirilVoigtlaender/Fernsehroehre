@@ -15,11 +15,11 @@ public class Bildpunkt
     /**
      * Constructor for objects of class Bildpunkt
      */
-    public Bildpunkt(int x1, int y1, Vektor e)
+    public Bildpunkt(int x, int y, Vektor original)
     {
-        x=x1;
-        y=y1;
-        original=e;
+        this.x = x;
+        this.y = y;
+        this.original = original;
     }
     
     public void koordinatenAusgeben(GreenfootImage image)
