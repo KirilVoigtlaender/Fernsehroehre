@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Magnet extends Actor
 {
-    private Vektor Richtungsvektor;
+    private Vektor richtungsvektor;
     private double abstand;
     private GreenfootImage image = new GreenfootImage(1200,800);
     private double magnetfeldstärke;
@@ -18,9 +18,9 @@ public class Magnet extends Actor
     private double maxBetrag;
     
     private int y;
-    public Magnet(Vektor Richtungsvektor , double abstand,  int y ,String name, String erhöhen, String verringern, double maxBetrag)
+    public Magnet(Vektor richtungsvektor , double abstand,  int y ,String name, String erhöhen, String verringern, double maxBetrag)
     {
-        this.Richtungsvektor = Richtungsvektor;
+        this.richtungsvektor = richtungsvektor;
         this.abstand = abstand;
         this.y = y;
         this.name = name;
@@ -46,8 +46,8 @@ public class Magnet extends Actor
         Color farbepol2;
         int helligkeit;
         image.clear();
-        Bildpunkt Pol1 = MyWorld.perspective(Richtungsvektor.multiplizieren(abstand/2));
-        Bildpunkt Pol2 = MyWorld.perspective(Richtungsvektor.multiplizieren(-abstand/2));
+        Bildpunkt Pol1 = MyWorld.perspective(richtungsvektor.multiplizieren(abstand/2));
+        Bildpunkt Pol2 = MyWorld.perspective(richtungsvektor.multiplizieren(-abstand/2));
         helligkeit =(int) (-245 * Math.abs(magnetfeldstärke)/maxBetrag+250);
         if(magnetfeldstärke>0)
         {
