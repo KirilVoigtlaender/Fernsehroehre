@@ -42,8 +42,8 @@ public class Magnet extends Actor
     }
     public void draw()
     {
-        Color farbepol1;
-        Color farbepol2;
+        Color farbeSenkrecht;
+        Color farbeWaagerecht;
         int helligkeit;
         image.clear();
         Bildpunkt Pol1 = MyWorld.perspective(richtungsvektor.multiplizieren(abstand/2));
@@ -51,18 +51,18 @@ public class Magnet extends Actor
         helligkeit =(int) (-245 * Math.abs(magnetfeldstärke)/maxBetrag+250);
         if(magnetfeldstärke>0)
         {
-            farbepol1 = new Color(helligkeit,255,helligkeit);
-            farbepol2 = new Color(255,helligkeit,helligkeit);
+            farbeSenkrecht = new Color(helligkeit,255,helligkeit);
+            farbeWaagerecht = new Color(255,helligkeit,helligkeit);
         }
         else
         {
-            farbepol1 = new Color(255,helligkeit,helligkeit);
-            farbepol2 = new Color(helligkeit,255,helligkeit);
+            farbeSenkrecht = new Color(255,helligkeit,helligkeit);
+            farbeWaagerecht = new Color(helligkeit,255,helligkeit);
         }
-        image.setColor(farbepol1);
+        image.setColor(farbeSenkrecht);
         image.fillOval(Pol1.x-10,Pol1.y-10,20,20);
         
-        image.setColor(farbepol2);
+        image.setColor(farbeWaagerecht);
         image.fillOval(Pol2.x-10,Pol2.y-10,20,20);
         image.setColor(Color.ORANGE);
         image.drawLine(Pol1.x,Pol1.y,Pol2.x,Pol2.y);
