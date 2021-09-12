@@ -64,8 +64,8 @@ public class MyWorld extends World
         image.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(image);
         
-        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrecht","up","down",30),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerecht","right","left",30),600,400);
+        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrecht","up","down",40),600,400);
+        addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerecht","right","left",40),600,400);
     }
     
     public static Bildpunkt perspective(Vektor v)
