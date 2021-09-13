@@ -72,8 +72,15 @@ public class Elektronenkanone extends Actor
         Bildpunkt Kanone6 = MyWorld.perspective(new Vektor(positionX,5,-5));
         Bildpunkt Kanone7 = MyWorld.perspective(new Vektor(positionX,-5,5));
         Bildpunkt Kanone8 = MyWorld.perspective(new Vektor(positionX,5,5));
-        image.drawPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone3.x,Kanone4.x,Kanone5.x,Kanone6.x,Kanone7.x,Kanone8.x,}, 
-        new int[]{Kanone1.y,Kanone2.y,Kanone3.y,Kanone4.y,Kanone5.y,Kanone6.y,Kanone7.y,Kanone8.y},8);
+        
+        image.fillPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone6.x,Kanone8.x,},
+        new int[]{Kanone1.y,Kanone2.y,Kanone6.y,Kanone8.y},4);
+        image.fillPolygon(new int[]{Kanone1.x,Kanone8.x,Kanone7.x,Kanone4.x},
+        new int[] {Kanone1.y,Kanone8.y,Kanone7.y,Kanone4.y},4);
+        image.fillPolygon(new int[]{Kanone7.x,Kanone4.x,Kanone3.x,Kanone5.x,},
+        new int[]{Kanone7.y,Kanone4.y,Kanone3.y,Kanone5.y,},4);
+        image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
+        new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
         
 
         helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);

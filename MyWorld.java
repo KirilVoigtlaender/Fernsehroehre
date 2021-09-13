@@ -54,7 +54,6 @@ public class MyWorld extends World
         image.drawLine(B8.x,B8.y,B2.x,B2.y);
         image.drawLine(B8.x,B8.y,B7.x,B7.y);
         image.drawLine(B8.x,B8.y,B6.x,B6.y);
-        image.drawLine(B3.x,B3.y,B6.x,B6.y);
         
         image.setColor(Color.LIGHT_GRAY);
         image.drawLine(B5.x,B5.y,B6.x,B6.y);
