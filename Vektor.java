@@ -23,5 +23,8 @@ public class Vektor
     {
         return new Vektor(x*zahl, y*zahl, z*zahl);
     }
-    
+    public Vektor addieren(Vektor v)
+    {
+        return new Vektor(x + v.x, y + v.y, z + v.z);
+    }
 }

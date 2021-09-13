@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Magnet extends Actor
+public class Elektronenkanone extends Actor
 {
     private Vektor richtungsvektor;
     private double abstand;
@@ -14,12 +14,12 @@ public class Magnet extends Actor
     private String name;
     private String erhöhen;
     private String verringern;
-    private double maxBetrag;
+    private double maxSpannung;
     
-    private double magnetfeldstärke;
+    private double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
     
-    public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag)
+    public Elektronenkanone(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxSpannung)
     {
         this.richtungsvektor = richtungsvektor;
         this.abstand = abstand;
@@ -27,8 +27,8 @@ public class Magnet extends Actor
         this.name = name;
         this.erhöhen = erhöhen;
         this.verringern = verringern;
-        this.maxBetrag = maxBetrag;
-        magnetfeldstärke = maxBetrag/2;
+        this.maxSpannung = maxSpannung;
+        spannung = maxSpannung/2;
         setImage(image);
         draw();
     }
@@ -45,21 +45,24 @@ public class Magnet extends Actor
     {
         Color farbePolPositiv;
         Color farbePolNegativ;
+        
+        Vektor vektorPolNegativ = new Vektor(-180,0,0);
         int helligkeit;
         image.clear();
-        Bildpunkt polPositiv = MyWorld.perspective(richtungsvektor.multiplizieren(abstand/2));
-        Bildpunkt polNegativ = MyWorld.perspective(richtungsvektor.multiplizieren(-abstand/2));
-        helligkeit =(int) (-245 * Math.abs(magnetfeldstärke)/maxBetrag+250);
-        if(magnetfeldstärke>0)
-        {
-            farbePolPositiv = new Color(helligkeit,255,helligkeit);
-            farbePolNegativ = new Color(255,helligkeit,helligkeit);
-        }
-        else
-        {
-            farbePolPositiv = new Color(255,helligkeit,helligkeit);
-            farbePolNegativ = new Color(helligkeit,255,helligkeit);
-        }
+        Bildpunkt polNegativ = MyWorld.perspective(vektorPolNegativ);
+        Bildpunkt polPositiv = MyWorld.perspective(vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand)));
+        
+        helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
+        
+        
+        farbePolPositiv = new Color(255,helligkeit,helligkeit);
+        farbePolNegativ = new Color(helligkeit,helligkeit,255);
+        
+        
+        
+           
+            
+        
         image.setColor(farbePolPositiv);
         image.fillOval(polPositiv.x-10,polPositiv.y-10,20,20);
         
@@ -68,25 +71,25 @@ public class Magnet extends Actor
         image.setColor(Color.ORANGE);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke),10,labelY);
+        image.drawString(name + ": "+ String.valueOf(spannung),10,labelY);
         
     }
     public void steuern()
     {
         if(Greenfoot.isKeyDown(erhöhen))
         {
-            magnetfeldstärke += 0.1;
-            if(magnetfeldstärke > maxBetrag)
+            spannung += 0.1;
+            if(spannung > maxSpannung)
             {
-                magnetfeldstärke = maxBetrag;
+                spannung = maxSpannung;
             }
         }
         if(Greenfoot.isKeyDown(verringern))
         {
-           magnetfeldstärke -= 0.1;
-           if(magnetfeldstärke < -maxBetrag)
+           spannung -= 0.1;
+           if(spannung < 0)
             {
-                magnetfeldstärke = -maxBetrag;
+                spannung = 0;
             }
         }
     }

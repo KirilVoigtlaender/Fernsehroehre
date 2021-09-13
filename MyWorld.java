@@ -23,23 +23,29 @@ public class MyWorld extends World
         image.fill();
         image.setColor(Color.BLACK);
         Bildpunkt B1 = perspective(new Vektor(-200,-80,-80));
-        //B1.koordinatenAusgeben(image);
+        B1.koordinatenAusgeben(image);
         Bildpunkt B2 = perspective(new Vektor(-200,-80,80));
-        //B2.koordinatenAusgeben(image);
+        B2.koordinatenAusgeben(image);
         Bildpunkt B3 = perspective(new Vektor(-200,80,80));
-        //B3.koordinatenAusgeben(image);
+        B3.koordinatenAusgeben(image);
         Bildpunkt B4 = perspective(new Vektor(-200,80,-80));
-        //B4.koordinatenAusgeben(image);
+        B4.koordinatenAusgeben(image);
         Bildpunkt B5 = perspective(new Vektor(200,80,-80));
-        //B5.koordinatenAusgeben(image);
+        B5.koordinatenAusgeben(image);
         Bildpunkt B6 = perspective(new Vektor(200,80,80));
-        //B6.koordinatenAusgeben(image);
+        B6.koordinatenAusgeben(image);
         Bildpunkt B7 = perspective(new Vektor(200,-80,-80));
+        B7.koordinatenAusgeben(image);
         Bildpunkt B8 = perspective( new Vektor(200,-80,80));
+        B8.koordinatenAusgeben(image);
         Bildpunkt B9 = perspective( new Vektor(600,-200,200));
+        B9.koordinatenAusgeben(image);
         Bildpunkt B10 = perspective(new Vektor(600,-200,-200));
+        B10.koordinatenAusgeben(image);
         Bildpunkt B11 = perspective(new Vektor(600,200,200));
+        B11.koordinatenAusgeben(image);
         Bildpunkt B12 = perspective(new Vektor(600,200,-200));
+        B12.koordinatenAusgeben(image);
         
         image.drawLine(B9.x,B9.y,B11.x,B11.y);
         image.drawLine(B9.x,B9.y,B10.x,B10.y);
@@ -64,8 +70,11 @@ public class MyWorld extends World
         image.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(image);
         
-        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrecht","up","down",40),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerecht","right","left",40),600,400);
+        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",40),600,400);
+        addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerechtes Spulenpaar","right","left",40),600,400);
+        
+        addObject(new Elektronenkanone(new Vektor(1,0,0),30,80,"Elektronenkanone","+","-",40),600,400);
+
     }
     
     public static Bildpunkt perspective(Vektor v)
