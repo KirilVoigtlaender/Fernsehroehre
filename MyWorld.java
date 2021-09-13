@@ -16,9 +16,8 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1200, 800, 1); 
-        //image.drawLine(100,70,10,18);
-        //setBackground(image);
+        super(1200, 800, 1);
+        
         image.setColor(Color.WHITE);
         image.fill();
         image.setColor(Color.BLACK);
@@ -47,20 +46,16 @@ public class MyWorld extends World
         Bildpunkt B12 = perspective(new Vektor(600,200,-200));
         B12.koordinatenAusgeben(image);
         
-        image.drawLine(B9.x,B9.y,B11.x,B11.y);
-        image.drawLine(B9.x,B9.y,B10.x,B10.y);
-        image.drawLine(B11.x,B11.y,B6.x,B6.y);
-        image.drawLine(B10.x,B10.y,B7.x,B7.y);
+        image.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
+        new int[]{B3.y,B4.y,B1.y,B7.y,B10.y,B9.y,B11.y,B6.y},8);
         image.drawLine(B9.x,B9.y,B8.x,B8.y);
         image.drawLine(B1.x,B1.y,B2.x,B2.y);
         image.drawLine(B3.x,B3.y,B2.x,B2.y);
-        image.drawLine(B1.x,B1.y,B4.x,B4.y);
-        image.drawLine(B1.x,B1.y,B7.x,B7.y);
         image.drawLine(B8.x,B8.y,B2.x,B2.y);
-        image.drawLine(B3.x,B3.y,B4.x,B4.y);
         image.drawLine(B8.x,B8.y,B7.x,B7.y);
         image.drawLine(B8.x,B8.y,B6.x,B6.y);
         image.drawLine(B3.x,B3.y,B6.x,B6.y);
+        
         image.setColor(Color.LIGHT_GRAY);
         image.drawLine(B5.x,B5.y,B6.x,B6.y);
         image.drawLine(B5.x,B5.y,B7.x,B7.y);
@@ -73,7 +68,7 @@ public class MyWorld extends World
         addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",40),600,400);
         addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerechtes Spulenpaar","right","left",40),600,400);
         
-        addObject(new Elektronenkanone(new Vektor(1,0,0),30,80,"Elektronenkanone","+","-",40),600,400);
+        addObject(new Elektronenkanone(new Vektor(1,0,0),-180,30,80,"Elektronenkanone","+","-",40),600,400);
 
     }
     
