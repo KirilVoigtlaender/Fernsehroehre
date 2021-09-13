@@ -47,11 +47,19 @@ public class Elektronenkanone extends Actor
         Color farbePolNegativ;
         
         Vektor vektorPolNegativ = new Vektor(-180,0,0);
+        Vektor vektorPolPositiv = vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand));
         int helligkeit;
         image.clear();
-        Bildpunkt polNegativ = MyWorld.perspective(vektorPolNegativ);
-        Bildpunkt polPositiv = MyWorld.perspective(vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand)));
-        
+        Bildpunkt polNegativ1 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,30,30)));
+        Bildpunkt polNegativ2 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,30,-30)));
+        Bildpunkt polNegativ3 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,30)));
+        Bildpunkt polNegativ4 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,-30)));
+        Bildpunkt polPositiv1 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,30,30)));
+        Bildpunkt polPositiv2 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,30,-30)));
+        Bildpunkt polPositiv3 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,30)));
+        Bildpunkt polPositiv4 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,-30)));
+        Bildpunkt polNegativ =  MyWorld.perspective( new Vektor(-180,0,0));
+        Bildpunkt polPositiv =  MyWorld.perspective(vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand)));
         helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
         
         
@@ -64,12 +72,21 @@ public class Elektronenkanone extends Actor
             
         
         image.setColor(farbePolPositiv);
-        image.fillOval(polPositiv.x-10,polPositiv.y-10,20,20);
+        image.drawLine(polPositiv1.x,polPositiv1.y,polPositiv2.x,polPositiv2.y);
+        image.drawLine(polPositiv4.x,polPositiv4.y,polPositiv3.x,polPositiv3.y);
+        image.drawLine(polPositiv2.x,polPositiv2.y,polPositiv4.x,polPositiv4.y);
+        image.drawLine(polPositiv1.x,polPositiv1.y,polPositiv3.x,polPositiv3.y);
+
         
         image.setColor(farbePolNegativ);
-        image.fillOval(polNegativ.x-10,polNegativ.y-10,20,20);
+        image.drawLine(polNegativ1.x,polNegativ1.y,polNegativ2.x,polNegativ2.y);
+        image.drawLine(polNegativ4.x,polNegativ4.y,polNegativ3.x,polNegativ3.y);
+        image.drawLine(polNegativ2.x,polNegativ2.y,polNegativ4.x,polNegativ4.y);
+        image.drawLine(polNegativ1.x,polNegativ1.y,polNegativ3.x,polNegativ3.y);
+
         image.setColor(Color.ORANGE);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
+        
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(spannung),10,labelY);
         
