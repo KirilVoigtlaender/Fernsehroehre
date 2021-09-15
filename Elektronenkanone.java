@@ -16,10 +16,10 @@ public class Elektronenkanone extends Actor
     private String erhöhen;
     private String verringern;
     private double maxSpannung;
-
+    
     private double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
-
+    
     public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxSpannung)
     {
         this.richtungsvektor = richtungsvektor;
@@ -82,9 +82,7 @@ public class Elektronenkanone extends Actor
         image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
         new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
         
-
         helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
-        
         farbePolPositiv = new Color(255,helligkeit,helligkeit);
         farbePolNegativ = new Color(helligkeit,helligkeit,255);
         image.setColor(farbePolPositiv);
@@ -105,7 +103,7 @@ public class Elektronenkanone extends Actor
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
 
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(spannung),10,labelY);
+        image.drawString(name + ": "+ String.valueOf(spannung)+" kV"+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
 
     }
 

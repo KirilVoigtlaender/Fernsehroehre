@@ -67,7 +67,7 @@ public class MyWorld extends World
         addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",40),600,400);
         addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerechtes Spulenpaar","right","left",40),600,400);
         
-        addObject(new Elektronenkanone(new Vektor(1,0,0),-180,30,80,"Elektronenkanone","+","-",40),600,400);
+        addObject(new Elektronenkanone(new Vektor(1,0,0),-180,30,80,"Elektronenkanone","+","-",15),600,400);
 
     }
     

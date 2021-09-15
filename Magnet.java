@@ -68,7 +68,7 @@ public class Magnet extends Actor
         image.setColor(Color.ORANGE);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke),10,labelY);
+        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
         
     }
     public void steuern()
