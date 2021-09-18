@@ -18,6 +18,7 @@ public class Magnet extends Actor
     
     private double magnetfeldstärke;
     private GreenfootImage image = new GreenfootImage(1200,800);
+    public double alpha;
     
     public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag)
     {
@@ -30,6 +31,7 @@ public class Magnet extends Actor
         this.maxBetrag = maxBetrag;
         magnetfeldstärke = maxBetrag/2;
         setImage(image);
+        winkelberechnung();
         draw();
     }
     /**
@@ -39,6 +41,7 @@ public class Magnet extends Actor
     public void act()
     {
         steuern();
+        winkelberechnung();
         draw();
     }
     public void draw()
@@ -65,11 +68,11 @@ public class Magnet extends Actor
         
         image.setColor(farbePolNegativ);
         image.fillOval(polNegativ.x-10,polNegativ.y-10,20,20);
-        image.setColor(Color.ORANGE);
+        image.setColor(Color.YELLOW);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
-        
+        image.drawString("Der Winkel alpha beträgt = "+alpha,10,labelY+15);
     }
     public void steuern()
     {
@@ -89,5 +92,9 @@ public class Magnet extends Actor
                 magnetfeldstärke = -maxBetrag;
             }
         }
+    }
+    public void winkelberechnung()
+    {
+        alpha=10;
     }
 }

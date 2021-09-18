@@ -65,10 +65,10 @@ public class MyWorld extends World
         setBackground(image);
         
         addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",40),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,50,"waagerechtes Spulenpaar","right","left",40),600,400);
-        
-        addObject(new Elektronenkanone(new Vektor(1,0,0),-180,30,80,"Elektronenkanone","+","-",15),600,400);
-
+        addObject(new Magnet(new Vektor(0,1,0),200,60,"waagerechtes Spulenpaar","right","left",40),600,400);
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,100,"Elektronenkanone","+","-",15);
+        addObject(E,600,400);
+        addObject(new Strahl (115,"Strahlgeschwindigkeit",E),600,400);
     }
     
     public static Bildpunkt perspective(Vektor v)

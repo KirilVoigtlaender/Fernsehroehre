@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elektronenkanone extends Actor
 {
     private Vektor richtungsvektor;
-    private double positionX;
+    public double positionX;
     private double abstand;
     private int labelY;
     private String name;
@@ -17,7 +17,7 @@ public class Elektronenkanone extends Actor
     private String verringern;
     private double maxSpannung;
     
-    private double spannung;
+    public double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
     
     public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxSpannung)
@@ -97,10 +97,7 @@ public class Elektronenkanone extends Actor
             new int[] { polNegativ1.y, polNegativ2.y, polNegativ3.y, polNegativ4.y },
             4); 
 
-        image.setColor(Color.ORANGE);
-        Bildpunkt polNegativ =  MyWorld.perspective( new Vektor(-180,0,0));
-        Bildpunkt polPositiv =  MyWorld.perspective(vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand)));
-        image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
+        
 
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(spannung)+" kV"+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
