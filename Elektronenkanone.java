@@ -16,6 +16,7 @@ public class Elektronenkanone extends Actor
     private String erhöhen;
     private String verringern;
     private double maxSpannung;
+    private double minSpannung;
     
     public double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
@@ -30,6 +31,7 @@ public class Elektronenkanone extends Actor
         this.erhöhen = erhöhen;
         this.verringern = verringern;
         this.maxSpannung = maxSpannung;
+        minSpannung = maxSpannung/10;
         spannung = maxSpannung/2;
         setImage(image);
         draw();
@@ -108,7 +110,7 @@ public class Elektronenkanone extends Actor
     {
         if(Greenfoot.isKeyDown(erhöhen))
         {
-            spannung += 0.1;
+            spannung += maxSpannung/100;
             if(spannung > maxSpannung)
             {
                 spannung = maxSpannung;
@@ -116,10 +118,10 @@ public class Elektronenkanone extends Actor
         }
         if(Greenfoot.isKeyDown(verringern))
         {
-            spannung -= 0.1;
-            if(spannung < 0)
+            spannung -=  maxSpannung/100;
+            if(spannung < minSpannung)
             {
-                spannung = 0;
+                spannung = minSpannung;
             }
         }
     }

@@ -78,7 +78,7 @@ public class Magnet extends Actor
     {
         if(Greenfoot.isKeyDown(erhöhen))
         {
-            magnetfeldstärke += 0.1;
+            magnetfeldstärke += maxBetrag/100;
             if(magnetfeldstärke > maxBetrag)
             {
                 magnetfeldstärke = maxBetrag;
@@ -86,7 +86,7 @@ public class Magnet extends Actor
         }
         if(Greenfoot.isKeyDown(verringern))
         {
-           magnetfeldstärke -= 0.1;
+           magnetfeldstärke -= maxBetrag/100;
            if(magnetfeldstärke < -maxBetrag)
             {
                 magnetfeldstärke = -maxBetrag;
