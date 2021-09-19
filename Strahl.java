@@ -13,9 +13,9 @@ public class Strahl extends Actor
     private Elektronenkanone quelle;
     
     private GreenfootImage image = new GreenfootImage(1200,800);
-    private double teilchengeschwindigkeit; // m/s
-    private double elektronenladung = 1.602E-19;//in C = A*s
-    private double elektronenmasse = 9.109E-31;// in kg
+    public double teilchengeschwindigkeit; // m/s
+    public double elektronenladung = 1.602E-19;//in C = A*s
+    public double elektronenmasse = 9.109E-31;// in kg
     public Strahl( int labelY ,String name, Elektronenkanone quelle)
     {
         this.labelY = labelY;

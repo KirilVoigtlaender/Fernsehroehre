@@ -64,11 +64,14 @@ public class MyWorld extends World
         image.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(image);
         
-        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",40),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,60,"waagerechtes Spulenpaar","right","left",40),600,400);
-        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,100,"Elektronenkanone","+","-",15);
+        
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,120,"Elektronenkanone","+","-",15);
         addObject(E,600,400);
-        addObject(new Strahl (115,"Strahlgeschwindigkeit",E),600,400);
+        Strahl S = new Strahl (135,"Strahlgeschwindigkeit",E);
+        addObject(S,600,400);
+        
+        addObject(new Magnet(new Vektor(0,0,1),200,20,"senkrechtes Spulenpaar","up","down",10,S,50),600,400);
+        addObject(new Magnet(new Vektor(0,1,0),200,70,"waagerechtes Spulenpaar","right","left",10,S,50),600,400);
     }
     
     public static Bildpunkt perspective(Vektor v)

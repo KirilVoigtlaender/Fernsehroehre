@@ -15,12 +15,15 @@ public class Magnet extends Actor
     private String erhöhen;
     private String verringern;
     private double maxBetrag;
+    private Strahl strahl;
+    private double felddurchmesser;// in mm
     
-    private double magnetfeldstärke;
+    private double magnetfeldstärke; // in mT
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double alpha;
+    private double bahnradius; // in mm
     
-    public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag)
+    public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
         this.abstand = abstand;
@@ -29,9 +32,11 @@ public class Magnet extends Actor
         this.erhöhen = erhöhen;
         this.verringern = verringern;
         this.maxBetrag = maxBetrag;
+        this.strahl = strahl;
+        this.felddurchmesser = felddurchmesser;
         magnetfeldstärke = maxBetrag/2;
         setImage(image);
-        winkelberechnung();
+        ablenkungberechnen();
         draw();
     }
     /**
@@ -41,7 +46,7 @@ public class Magnet extends Actor
     public void act()
     {
         steuern();
-        winkelberechnung();
+        ablenkungberechnen();
         draw();
     }
     public void draw()
@@ -71,8 +76,9 @@ public class Magnet extends Actor
         image.setColor(Color.YELLOW);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
-        image.drawString("Der Winkel alpha beträgt = "+alpha,10,labelY+15);
+        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+" in mT" + " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern ,10,labelY);
+        image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
+        image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
     }
     public void steuern()
     {
@@ -93,8 +99,10 @@ public class Magnet extends Actor
             }
         }
     }
-    public void winkelberechnung()
+    public void ablenkungberechnen()
     {
-        alpha=10;
+        bahnradius = strahl.elektronenmasse * strahl.teilchengeschwindigkeit /( strahl.elektronenladung * magnetfeldstärke/1000) * 1000;
+        alpha = 2 * Math.atan(felddurchmesser/ (2 *bahnradius ));
+        
     }
 }
