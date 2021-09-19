@@ -10,7 +10,7 @@ public class Strahl extends Actor
 {
     private int labelY;
     private String name;
-    private Elektronenkanone quelle;
+    public Elektronenkanone quelle;
     
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double teilchengeschwindigkeit; // m/s

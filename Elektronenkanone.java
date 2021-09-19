@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elektronenkanone extends Actor
 {
-    private Vektor richtungsvektor;
+    public Vektor richtungsvektor;
     public double positionX;
     private double abstand;
     private int labelY;

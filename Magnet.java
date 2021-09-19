@@ -22,7 +22,7 @@ public class Magnet extends Actor
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double alpha;
     private double bahnradius; // in mm
-    
+    private Vektor ablenkungsrichtung;
     public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
@@ -79,6 +79,7 @@ public class Magnet extends Actor
         image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+" in mT" + " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern ,10,labelY);
         image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
         image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
+        image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
     }
     public void steuern()
     {
@@ -103,6 +104,6 @@ public class Magnet extends Actor
     {
         bahnradius = strahl.elektronenmasse * strahl.teilchengeschwindigkeit /( strahl.elektronenladung * magnetfeldstärke/1000) * 1000;
         alpha = 2 * Math.atan(felddurchmesser/ (2 *bahnradius ));
-        
+        ablenkungsrichtung = strahl.quelle.richtungsvektor.multiplizieren(-1).kreuzprodukt(this.richtungsvektor);
     }
 }
