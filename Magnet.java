@@ -22,7 +22,7 @@ public class Magnet extends Actor
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double alpha;
     private double bahnradius; // in mm
-    private Vektor ablenkungsrichtung;
+    public Vektor ablenkungsrichtung;
     public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;

@@ -11,19 +11,21 @@ public class Strahl extends Actor
     private int labelY;
     private String name;
     public Elektronenkanone quelle;
+    private double bildschirmabstand;
     
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double teilchengeschwindigkeit; // m/s
     public double elektronenladung = 1.602E-19;//in C = A*s
     public double elektronenmasse = 9.109E-31;// in kg
-    public Strahl( int labelY ,String name, Elektronenkanone quelle)
+    public Strahl( int labelY ,String name, Elektronenkanone quelle, double bildschirmabstand)
     {
         this.labelY = labelY;
         this.name = name;
         this.quelle = quelle;
+        this.bildschirmabstand = bildschirmabstand;
         setImage(image);
         geschwindigkeitBerechnen();
-        draw();
+        //draw();
         
     }
     /**
@@ -42,11 +44,12 @@ public class Strahl extends Actor
         
         Bildpunkt strahlAnfang = MyWorld.perspective(new Vektor(quelle.positionX,0,0));
         Bildpunkt strahlMitte = MyWorld.perspective(new Vektor(0,0,0));
-       
+        Bildpunkt strahlEnde = MyWorld.perspective(auslenkungBerechnen());
         
         image.setColor(Color.ORANGE);
         
         image.drawLine(strahlAnfang.x,strahlAnfang.y,strahlMitte.x,strahlMitte.y);
+        image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit)+ " m/s",10,labelY);
         
@@ -54,5 +57,14 @@ public class Strahl extends Actor
     public void geschwindigkeitBerechnen()
     {
         teilchengeschwindigkeit = Math.sqrt(2 * elektronenladung * quelle.spannung * 1000 / elektronenmasse);
+    }
+    public Vektor auslenkungBerechnen()
+    {
+        Vektor ergebnisvektor = new Vektor(bildschirmabstand,0,0);
+        for(Magnet m : getWorld().getObjects(Magnet.class) )
+        {
+            ergebnisvektor = ergebnisvektor.addieren( m.ablenkungsrichtung.multiplizieren(bildschirmabstand).multiplizieren(Math.tan(m.alpha)));
+        }
+        return ergebnisvektor;
     }
 }

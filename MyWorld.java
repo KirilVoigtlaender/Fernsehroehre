@@ -17,7 +17,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
-        
+        double bildschirmabstand = 600;
         image.setColor(Color.WHITE);
         image.fill();
         image.setColor(Color.BLACK);
@@ -37,13 +37,13 @@ public class MyWorld extends World
         B7.koordinatenAusgeben(image);
         Bildpunkt B8 = perspective( new Vektor(200,-80,80));
         B8.koordinatenAusgeben(image);
-        Bildpunkt B9 = perspective( new Vektor(600,-200,200));
+        Bildpunkt B9 = perspective( new Vektor(bildschirmabstand,-200,200));
         B9.koordinatenAusgeben(image);
-        Bildpunkt B10 = perspective(new Vektor(600,-200,-200));
+        Bildpunkt B10 = perspective(new Vektor(bildschirmabstand,-200,-200));
         B10.koordinatenAusgeben(image);
-        Bildpunkt B11 = perspective(new Vektor(600,200,200));
+        Bildpunkt B11 = perspective(new Vektor(bildschirmabstand,200,200));
         B11.koordinatenAusgeben(image);
-        Bildpunkt B12 = perspective(new Vektor(600,200,-200));
+        Bildpunkt B12 = perspective(new Vektor(bildschirmabstand,200,-200));
         B12.koordinatenAusgeben(image);
         
         image.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
@@ -67,7 +67,7 @@ public class MyWorld extends World
         
         Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,205,"Elektronenkanone","+","-",15);
         addObject(E,600,400);
-        Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E);
+        Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,bildschirmabstand);
         addObject(S,600,400);
         
         addObject(new Magnet(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",10,S,50),600,400);
