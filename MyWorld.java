@@ -17,7 +17,9 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1);
-        double bildschirmabstand = 600;
+        double bildschirmabstand = 500;
+        double bildschirmbreite = 220;
+        double bildschirmhöhe = 220;
         image.setColor(Color.WHITE);
         image.fill();
         image.setColor(Color.BLACK);
@@ -29,21 +31,21 @@ public class MyWorld extends World
         B3.koordinatenAusgeben(image);
         Bildpunkt B4 = perspective(new Vektor(-200,80,-80));
         B4.koordinatenAusgeben(image);
-        Bildpunkt B5 = perspective(new Vektor(200,80,-80));
+        Bildpunkt B5 = perspective(new Vektor(150,80,-80));
         B5.koordinatenAusgeben(image);
-        Bildpunkt B6 = perspective(new Vektor(200,80,80));
+        Bildpunkt B6 = perspective(new Vektor(150,80,80));
         B6.koordinatenAusgeben(image);
-        Bildpunkt B7 = perspective(new Vektor(200,-80,-80));
+        Bildpunkt B7 = perspective(new Vektor(150,-80,-80));
         B7.koordinatenAusgeben(image);
-        Bildpunkt B8 = perspective( new Vektor(200,-80,80));
+        Bildpunkt B8 = perspective( new Vektor(150,-80,80));
         B8.koordinatenAusgeben(image);
-        Bildpunkt B9 = perspective( new Vektor(bildschirmabstand,-200,200));
+        Bildpunkt B9 = perspective( new Vektor(bildschirmabstand,-bildschirmbreite,bildschirmhöhe));
         B9.koordinatenAusgeben(image);
-        Bildpunkt B10 = perspective(new Vektor(bildschirmabstand,-200,-200));
+        Bildpunkt B10 = perspective(new Vektor(bildschirmabstand,-bildschirmbreite,-bildschirmhöhe));
         B10.koordinatenAusgeben(image);
-        Bildpunkt B11 = perspective(new Vektor(bildschirmabstand,200,200));
+        Bildpunkt B11 = perspective(new Vektor(bildschirmabstand,bildschirmbreite,bildschirmhöhe));
         B11.koordinatenAusgeben(image);
-        Bildpunkt B12 = perspective(new Vektor(bildschirmabstand,200,-200));
+        Bildpunkt B12 = perspective(new Vektor(bildschirmabstand,bildschirmbreite,-bildschirmhöhe));
         B12.koordinatenAusgeben(image);
         
         image.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
@@ -70,8 +72,8 @@ public class MyWorld extends World
         Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,bildschirmabstand);
         addObject(S,600,400);
         
-        addObject(new Magnet(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",10,S,50),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",10,S,50),600,400);
+        addObject(new Magnet(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
+        addObject(new Magnet(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
     }
     
     public static Bildpunkt perspective(Vektor v)
