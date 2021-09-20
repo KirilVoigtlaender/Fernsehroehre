@@ -15,13 +15,14 @@ public class Elektronenkanone extends Actor
     private String name;
     private String erhöhen;
     private String verringern;
-    private double maxSpannung;
     private double minSpannung;
+    private double maxSpannung;
+
     
     public double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
     
-    public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxSpannung)
+    public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern,double minSpannung, double maxSpannung)
     {
         this.richtungsvektor = richtungsvektor;
         this.positionX = positionX;
@@ -30,9 +31,9 @@ public class Elektronenkanone extends Actor
         this.name = name;
         this.erhöhen = erhöhen;
         this.verringern = verringern;
+        this.minSpannung = minSpannung ;
         this.maxSpannung = maxSpannung;
-        minSpannung = maxSpannung/10;
-        spannung = maxSpannung/2;
+        spannung = (maxSpannung+minSpannung)/2;
         setImage(image);
         draw();
     }

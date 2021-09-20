@@ -65,7 +65,7 @@ public class MyWorld extends World
         setBackground(image);
         
         
-        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,205,"Elektronenkanone","+","-",15);
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,205,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
         Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,bildschirmabstand);
         addObject(S,600,400);
