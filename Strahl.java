@@ -45,13 +45,13 @@ public class Strahl extends Actor
         Bildpunkt strahlAnfang = MyWorld.perspective(new Vektor(quelle.positionX,0,0));
         Bildpunkt strahlMitte = MyWorld.perspective(new Vektor(0,0,0));
         Bildpunkt strahlEnde = MyWorld.perspective(auslenkungBerechnen());
-        
+        strahlEnde.koordinatenAusgeben(image);
         image.setColor(Color.ORANGE);
         
         image.drawLine(strahlAnfang.x,strahlAnfang.y,strahlMitte.x,strahlMitte.y);
         image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit)+ " m/s",10,labelY);
+        image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit/1000)+ " km/s",10,labelY);
         
     }
     public void geschwindigkeitBerechnen()
