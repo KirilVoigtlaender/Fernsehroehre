@@ -58,23 +58,23 @@ public class Elektronenkanone extends Actor
         
         int helligkeit;
         image.clear();
-        Bildpunkt polNegativ1 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,30,30)));
-        Bildpunkt polNegativ2 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,30,-30)));
-        Bildpunkt polNegativ3 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,-30)));
-        Bildpunkt polNegativ4 = MyWorld.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,30)));
+        Bildpunkt polNegativ1 = Fernsehröhre.perspective(vektorPolNegativ.addieren(new Vektor(0,30,30)));
+        Bildpunkt polNegativ2 = Fernsehröhre.perspective(vektorPolNegativ.addieren(new Vektor(0,30,-30)));
+        Bildpunkt polNegativ3 = Fernsehröhre.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,-30)));
+        Bildpunkt polNegativ4 = Fernsehröhre.perspective(vektorPolNegativ.addieren(new Vektor(0,-30,30)));
 
-        Bildpunkt polPositiv1 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,30,30)));
-        Bildpunkt polPositiv2 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,30,-30)));
-        Bildpunkt polPositiv3 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,-30)));
-        Bildpunkt polPositiv4 = MyWorld.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,30)));
-        Bildpunkt Kanone1 = MyWorld.perspective(new Vektor(-200,5,5));
-        Bildpunkt Kanone2 = MyWorld.perspective(new Vektor(-200,5,-5));
-        Bildpunkt Kanone3 = MyWorld.perspective(new Vektor(-200,-5,-5));
-        Bildpunkt Kanone4 = MyWorld.perspective(new Vektor(-200,-5,5));
-        Bildpunkt Kanone5 = MyWorld.perspective(new Vektor(positionX,-5,-5));
-        Bildpunkt Kanone6 = MyWorld.perspective(new Vektor(positionX,5,-5));
-        Bildpunkt Kanone7 = MyWorld.perspective(new Vektor(positionX,-5,5));
-        Bildpunkt Kanone8 = MyWorld.perspective(new Vektor(positionX,5,5));
+        Bildpunkt polPositiv1 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,30,30)));
+        Bildpunkt polPositiv2 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,30,-30)));
+        Bildpunkt polPositiv3 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,-30)));
+        Bildpunkt polPositiv4 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,30)));
+        Bildpunkt Kanone1 = Fernsehröhre.perspective(new Vektor(-200,5,5));
+        Bildpunkt Kanone2 = Fernsehröhre.perspective(new Vektor(-200,5,-5));
+        Bildpunkt Kanone3 = Fernsehröhre.perspective(new Vektor(-200,-5,-5));
+        Bildpunkt Kanone4 = Fernsehröhre.perspective(new Vektor(-200,-5,5));
+        Bildpunkt Kanone5 = Fernsehröhre.perspective(new Vektor(positionX,-5,-5));
+        Bildpunkt Kanone6 = Fernsehröhre.perspective(new Vektor(positionX,5,-5));
+        Bildpunkt Kanone7 = Fernsehröhre.perspective(new Vektor(positionX,-5,5));
+        Bildpunkt Kanone8 = Fernsehröhre.perspective(new Vektor(positionX,5,5));
         
         image.fillPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone6.x,Kanone8.x,},
         new int[]{Kanone1.y,Kanone2.y,Kanone6.y,Kanone8.y},4);

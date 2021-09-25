@@ -42,9 +42,9 @@ public class Strahl extends Actor
         
         image.clear();
         
-        Bildpunkt strahlAnfang = MyWorld.perspective(new Vektor(quelle.positionX,0,0));
-        Bildpunkt strahlMitte = MyWorld.perspective(new Vektor(0,0,0));
-        Bildpunkt strahlEnde = MyWorld.perspective(auslenkungBerechnen());
+        Bildpunkt strahlAnfang = Fernsehröhre.perspective(new Vektor(quelle.positionX,0,0));
+        Bildpunkt strahlMitte = Fernsehröhre.perspective(new Vektor(0,0,0));
+        Bildpunkt strahlEnde = Fernsehröhre.perspective(auslenkungBerechnen());
         strahlEnde.koordinatenAusgeben(image);
         image.setColor(Color.ORANGE);
         

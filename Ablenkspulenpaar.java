@@ -55,8 +55,8 @@ public class Ablenkspulenpaar extends Actor
         Color farbePolNegativ;
         int helligkeit;
         image.clear();
-        Bildpunkt polPositiv = MyWorld.perspective(richtungsvektor.multiplizieren(abstand/2));
-        Bildpunkt polNegativ = MyWorld.perspective(richtungsvektor.multiplizieren(-abstand/2));
+        Bildpunkt polPositiv = Fernsehröhre.perspective(richtungsvektor.multiplizieren(abstand/2));
+        Bildpunkt polNegativ = Fernsehröhre.perspective(richtungsvektor.multiplizieren(-abstand/2));
         helligkeit =(int) (-245 * Math.abs(magnetfeldstärke)/maxBetrag+250);
         if(magnetfeldstärke>0)
         {
