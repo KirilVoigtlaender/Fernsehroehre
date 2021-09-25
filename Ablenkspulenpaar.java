@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Magnet here.
+ * Write a description of class Ablenkspulenpaar here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Magnet extends Actor
+public class Ablenkspulenpaar extends Actor
 {
     private Vektor richtungsvektor;
     private double abstand;
@@ -23,7 +23,7 @@ public class Magnet extends Actor
     public double alpha;
     private double bahnradius; // in mm
     public Vektor ablenkungsrichtung;
-    public Magnet(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
+    public Ablenkspulenpaar(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
         this.abstand = abstand;
@@ -40,7 +40,7 @@ public class Magnet extends Actor
         draw();
     }
     /**
-     * Act - do whatever the Magnet wants to do. This method is called whenever
+     * Act - do whatever the Ablenkspulenpaar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
@@ -102,8 +102,15 @@ public class Magnet extends Actor
     }
     public void ablenkungberechnen()
     {
-        bahnradius = strahl.elektronenmasse * strahl.teilchengeschwindigkeit /( strahl.elektronenladung * magnetfeldstärke/1000) * 1000;
+        bahnradius 
+          = strahl.elektronenmasse 
+            * strahl.teilchengeschwindigkeit 
+            / (strahl.elektronenladung * magnetfeldstärke/1000)
+            * 1000;
         alpha = 2 * Math.atan(felddurchmesser/ (2 *bahnradius ));
-        ablenkungsrichtung = strahl.quelle.richtungsvektor.multiplizieren(-1).kreuzprodukt(this.richtungsvektor);
+        ablenkungsrichtung
+          = strahl.quelle.richtungsvektor.
+            multiplizieren(-1).
+            kreuzprodukt(this.richtungsvektor);
     }
 }

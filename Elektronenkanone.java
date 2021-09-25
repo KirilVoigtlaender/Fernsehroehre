@@ -15,8 +15,8 @@ public class Elektronenkanone extends Actor
     private String name;
     private String erhöhen;
     private String verringern;
-    private double minSpannung;
-    private double maxSpannung;
+    private double minSpannung; // in kV
+    private double maxSpannung;// in kV
 
     
     public double spannung;

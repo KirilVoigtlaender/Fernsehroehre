@@ -61,7 +61,7 @@ public class Strahl extends Actor
     public Vektor auslenkungBerechnen()
     {
         Vektor ergebnisvektor = new Vektor(bildschirmabstand,0,0);
-        for(Magnet m : getWorld().getObjects(Magnet.class) )
+        for(Ablenkspulenpaar m : getWorld().getObjects(Ablenkspulenpaar.class) )
         {
             ergebnisvektor = ergebnisvektor.addieren( m.ablenkungsrichtung.multiplizieren(bildschirmabstand).multiplizieren(Math.tan(m.alpha)));
         }

@@ -72,8 +72,8 @@ public class MyWorld extends World
         Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,bildschirmabstand);
         addObject(S,600,400);
         
-        addObject(new Magnet(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
-        addObject(new Magnet(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
     }
     
     public static Bildpunkt perspective(Vektor v)
