@@ -46,7 +46,7 @@ public class Strahl extends Actor
         Bildpunkt strahlMitte = Fernsehröhre.perspective(new Vektor(0,0,0));
         Bildpunkt strahlEnde = Fernsehröhre.perspective(auslenkungBerechnen());
         strahlEnde.koordinatenAusgeben(image);
-        image.setColor(Color.ORANGE);
+        image.setColor(Color.BLUE);
         
         image.drawLine(strahlAnfang.x,strahlAnfang.y,strahlMitte.x,strahlMitte.y);
         image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
@@ -63,7 +63,7 @@ public class Strahl extends Actor
         Vektor ergebnisvektor = new Vektor(bildschirmabstand,0,0);
         for(Ablenkspulenpaar m : getWorld().getObjects(Ablenkspulenpaar.class) )
         {
-            ergebnisvektor = ergebnisvektor.addieren( m.ablenkungsrichtung.multiplizieren(bildschirmabstand).multiplizieren(Math.tan(m.alpha)));
+            ergebnisvektor = ergebnisvektor.addieren( m.ablenkungsrichtung.multiplizieren(bildschirmabstand*Math.tan(m.alpha)));
         }
         return ergebnisvektor;
     }
