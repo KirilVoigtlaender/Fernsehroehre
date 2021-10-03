@@ -69,10 +69,10 @@ public class Ablenkspulenpaar extends Actor
             farbePolNegativ = new Color(helligkeit,255,helligkeit);
         }
         image.setColor(farbePolPositiv);
-        image.fillOval(polPositiv.x-10,polPositiv.y-10,20,20);
+        image.fillOval(polPositiv.x-(int)felddurchmesser/2,polPositiv.y-(int)felddurchmesser/2,(int)felddurchmesser,(int)felddurchmesser);
         
         image.setColor(farbePolNegativ);
-        image.fillOval(polNegativ.x-10,polNegativ.y-10,20,20);
+        image.fillOval(polNegativ.x-(int)felddurchmesser/2,polNegativ.y-(int)felddurchmesser/2,(int)felddurchmesser,(int)felddurchmesser);
         image.setColor(Color.YELLOW);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
