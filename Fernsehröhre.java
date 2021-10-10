@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Fernsehröhre extends World
 {
     private GreenfootImage image = new GreenfootImage(1200,800);
+    private GreenfootImage foreground = new GreenfootImage(1200,800);
     /**
      * Constructor for objects of class Fernsehröhre.
      * 
@@ -49,14 +50,15 @@ public class Fernsehröhre extends World
         Bildpunkt B12 = perspective(new Vektor(bildschirmabstand,bildschirmbreite,-bildschirmhöhe));
         B12.koordinatenAusgeben(image);
         
-        image.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
+        foreground.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
         new int[]{B3.y,B4.y,B1.y,B7.y,B10.y,B9.y,B11.y,B6.y},8);
-        image.drawLine(B9.x,B9.y,B8.x,B8.y);
-        image.drawLine(B1.x,B1.y,B2.x,B2.y);
-        image.drawLine(B3.x,B3.y,B2.x,B2.y);
-        image.drawLine(B8.x,B8.y,B2.x,B2.y);
-        image.drawLine(B8.x,B8.y,B7.x,B7.y);
-        image.drawLine(B8.x,B8.y,B6.x,B6.y);
+        foreground.drawLine(B9.x,B9.y,B8.x,B8.y);
+        foreground.drawLine(B1.x,B1.y,B2.x,B2.y);
+        foreground.drawLine(B3.x,B3.y,B2.x,B2.y);
+        foreground.drawLine(B8.x,B8.y,B2.x,B2.y);
+        foreground.drawLine(B8.x,B8.y,B7.x,B7.y);
+        foreground.drawLine(B8.x,B8.y,B6.x,B6.y);
+        addObject(new Gehäuse(foreground),600,400);
         
         image.setColor(Color.LIGHT_GRAY);
         image.drawLine(B5.x,B5.y,B6.x,B6.y);
@@ -75,6 +77,7 @@ public class Fernsehröhre extends World
         
         addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
         addObject(new Ablenkspulenpaar(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
     
     public static Bildpunkt perspective(Vektor v)

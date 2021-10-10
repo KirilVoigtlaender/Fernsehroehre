@@ -18,10 +18,9 @@ public class Elektronenkanone extends Actor
     private double minSpannung; // in kV
     private double maxSpannung;// in kV
 
-    
     public double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
-    
+
     public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern,double minSpannung, double maxSpannung)
     {
         this.richtungsvektor = richtungsvektor;
@@ -52,10 +51,10 @@ public class Elektronenkanone extends Actor
     {
         Color farbePolPositiv;
         Color farbePolNegativ;
-        
+
         Vektor vektorPolNegativ = new Vektor(positionX,0,0);
         Vektor vektorPolPositiv = vektorPolNegativ.addieren(richtungsvektor.multiplizieren(abstand));
-        
+
         int helligkeit;
         image.clear();
         Bildpunkt polNegativ1 = Fernsehröhre.perspective(vektorPolNegativ.addieren(new Vektor(0,30,30)));
@@ -67,6 +66,22 @@ public class Elektronenkanone extends Actor
         Bildpunkt polPositiv2 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,30,-30)));
         Bildpunkt polPositiv3 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,-30)));
         Bildpunkt polPositiv4 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,30)));
+
+        helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
+        farbePolPositiv = new Color(255,helligkeit,helligkeit);
+        farbePolNegativ = new Color(helligkeit,helligkeit,255);
+        image.setColor(farbePolPositiv);
+
+        image.drawPolygon(new int[] { polPositiv1.x, polPositiv2.x, polPositiv3.x, polPositiv4.x },
+            new int[] { polPositiv1.y, polPositiv2.y, polPositiv3.y, polPositiv4.y },
+            4);
+
+        image.setColor(farbePolNegativ);
+
+        image.drawPolygon(new int[] { polNegativ1.x, polNegativ2.x, polNegativ3.x, polNegativ4.x },
+            new int[] { polNegativ1.y, polNegativ2.y, polNegativ3.y, polNegativ4.y },
+            4); 
+            
         Bildpunkt Kanone1 = Fernsehröhre.perspective(new Vektor(-200,5,5));
         Bildpunkt Kanone2 = Fernsehröhre.perspective(new Vektor(-200,5,-5));
         Bildpunkt Kanone3 = Fernsehröhre.perspective(new Vektor(-200,-5,-5));
@@ -76,33 +91,17 @@ public class Elektronenkanone extends Actor
         Bildpunkt Kanone7 = Fernsehröhre.perspective(new Vektor(positionX,-5,5));
         Bildpunkt Kanone8 = Fernsehröhre.perspective(new Vektor(positionX,5,5));
         
-        image.fillPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone6.x,Kanone8.x,},
-        new int[]{Kanone1.y,Kanone2.y,Kanone6.y,Kanone8.y},4);
-        image.fillPolygon(new int[]{Kanone1.x,Kanone8.x,Kanone7.x,Kanone4.x},
-        new int[] {Kanone1.y,Kanone8.y,Kanone7.y,Kanone4.y},4);
-        image.fillPolygon(new int[]{Kanone7.x,Kanone4.x,Kanone3.x,Kanone5.x,},
-        new int[]{Kanone7.y,Kanone4.y,Kanone3.y,Kanone5.y,},4);
-        image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
-        new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
-        
-        helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
-        farbePolPositiv = new Color(255,helligkeit,helligkeit);
-        farbePolNegativ = new Color(helligkeit,helligkeit,255);
-        image.setColor(farbePolPositiv);
-        
-        image.drawPolygon(new int[] { polPositiv1.x, polPositiv2.x, polPositiv3.x, polPositiv4.x },
-            new int[] { polPositiv1.y, polPositiv2.y, polPositiv3.y, polPositiv4.y },
-            4);
-         
-        image.setColor(farbePolNegativ);
-        
-        image.drawPolygon(new int[] { polNegativ1.x, polNegativ2.x, polNegativ3.x, polNegativ4.x },
-            new int[] { polNegativ1.y, polNegativ2.y, polNegativ3.y, polNegativ4.y },
-            4); 
-
-        
-
         image.setColor(Color.BLACK);
+        image.fillPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone6.x,Kanone8.x,},
+            new int[]{Kanone1.y,Kanone2.y,Kanone6.y,Kanone8.y},4);
+        image.fillPolygon(new int[]{Kanone1.x,Kanone8.x,Kanone7.x,Kanone4.x},
+            new int[] {Kanone1.y,Kanone8.y,Kanone7.y,Kanone4.y},4);
+        image.fillPolygon(new int[]{Kanone7.x,Kanone4.x,Kanone3.x,Kanone5.x,},
+            new int[]{Kanone7.y,Kanone4.y,Kanone3.y,Kanone5.y,},4);
+        image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
+            new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
+
+        
         image.drawString(name + ": "+ String.valueOf(spannung)+" kV"+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
 
     }
