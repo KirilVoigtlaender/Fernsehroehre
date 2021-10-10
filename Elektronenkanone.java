@@ -67,7 +67,7 @@ public class Elektronenkanone extends Actor
         Bildpunkt polPositiv3 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,-30)));
         Bildpunkt polPositiv4 = Fernsehröhre.perspective(vektorPolPositiv.addieren(new Vektor(0,-30,30)));
 
-        helligkeit =(int) (-245 * Math.abs(spannung)/maxSpannung+250);
+        helligkeit =(int) (-175 * (spannung-minSpannung)/(maxSpannung-minSpannung) + 180);
         farbePolPositiv = new Color(255,helligkeit,helligkeit);
         farbePolNegativ = new Color(helligkeit,helligkeit,255);
         image.setColor(farbePolPositiv);
