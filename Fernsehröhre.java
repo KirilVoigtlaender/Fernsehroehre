@@ -70,7 +70,7 @@ public class Fernsehröhre extends World
         setBackground(image);
         Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,280,"delete");
         addObject(L,600,400);
-        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,205,"Elektronenkanone","+","-",12,16);
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,205,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
         Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
