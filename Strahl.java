@@ -11,17 +11,19 @@ public class Strahl extends Actor
     private int labelY;
     private String name;
     public Elektronenkanone quelle;
+    private Leuchtschirm schirm;
     private double bildschirmabstand;
     
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double teilchengeschwindigkeit; // m/s
     public double elektronenladung = 1.602E-19;//in C = A*s
     public double elektronenmasse = 9.109E-31;// in kg
-    public Strahl( int labelY ,String name, Elektronenkanone quelle, double bildschirmabstand)
+    public Strahl( int labelY ,String name, Elektronenkanone quelle,Leuchtschirm schirm, double bildschirmabstand)
     {
         this.labelY = labelY;
         this.name = name;
         this.quelle = quelle;
+        this.schirm = schirm;
         this.bildschirmabstand = bildschirmabstand;
         setImage(image);
         geschwindigkeitBerechnen();
@@ -44,12 +46,15 @@ public class Strahl extends Actor
         
         Bildpunkt strahlAnfang = Fernsehröhre.perspective(new Vektor(quelle.positionX,0,0));
         Bildpunkt strahlMitte = Fernsehröhre.perspective(new Vektor(0,0,0));
-        Bildpunkt strahlEnde = Fernsehröhre.perspective(auslenkungBerechnen());
+        Vektor ergebnis = auslenkungBerechnen();
+        Bildpunkt strahlEnde = Fernsehröhre.perspective(ergebnis);
+        
         strahlEnde.koordinatenAusgeben(image);
         image.setColor(Color.BLUE);
         
         image.drawLine(strahlAnfang.x,strahlAnfang.y,strahlMitte.x,strahlMitte.y);
         image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
+        schirm.setzePunkt(ergebnis);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit/1000)+ " km/s",10,labelY);
         

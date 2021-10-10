@@ -66,11 +66,11 @@ public class Fernsehröhre extends World
         image.drawLine(B12.x,B12.y,B11.x,B11.y);
         image.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(image);
-        
-        
+        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe);
+        addObject(L,600,400);
         Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,30,205,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
-        Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,bildschirmabstand);
+        Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
         
         addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
