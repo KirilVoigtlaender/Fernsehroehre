@@ -23,6 +23,7 @@ public class Ablenkspulenpaar extends Actor
     public double alpha;
     private double bahnradius; // in mm
     public Vektor ablenkungsrichtung;
+    private boolean läuft = false;
     public Ablenkspulenpaar(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
@@ -47,6 +48,7 @@ public class Ablenkspulenpaar extends Actor
     {
         steuern();
         ablenkungBerechnen();
+        läuft = true;
         draw();
     }
     public void draw()
@@ -80,8 +82,10 @@ public class Ablenkspulenpaar extends Actor
         image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
         image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
         image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
-        
-        image.drawImage(drawAusschnitt(),1000,labelY);
+        if(läuft)
+        {
+            image.drawImage(drawAusschnitt(),1000,labelY);
+        }
     }
     public void steuern()
     {
@@ -117,17 +121,18 @@ public class Ablenkspulenpaar extends Actor
     }
     public GreenfootImage drawAusschnitt()
     {
-        GreenfootImage kreis = new GreenfootImage(90,90);
-        kreis.drawOval(0,0,90,90);
+        int kreisgröße = 100;
+        GreenfootImage kreis = new GreenfootImage(kreisgröße,kreisgröße);
+        kreis.drawOval(0,0,kreisgröße,kreisgröße);
         kreis.setColor(Color.BLUE);
         double slowness = 1E10 / strahl.teilchengeschwindigkeit;
         double t = (double) System.currentTimeMillis() % slowness / slowness;
-        for(int i =0;i<10;i++)
+        for(int i =0; i<10; i++)
         {
-            double a = ((i+t)* alpha) / 10 ;
-            double x = Math.sin(a) * bahnradius * 90 / felddurchmesser ;
-            double y = 45 - (bahnradius - Math.cos(a) * bahnradius )* 90 / felddurchmesser;
-            kreis.drawOval((int) x,(int) y,2,2);
+            double a = ((i+t) * alpha) / 10 ;
+            double x = Math.sin(a) * bahnradius * kreisgröße / felddurchmesser ;
+            double y = kreisgröße / 2 - (bahnradius - Math.cos(a) * bahnradius) * kreisgröße / felddurchmesser;
+            kreis.drawOval((int) x-1,(int) y-1,2,2);
         }
         return kreis;
     }
