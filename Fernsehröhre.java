@@ -72,17 +72,17 @@ public class Fernsehröhre extends World
         addObject(L,600,400);
         Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,205,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
-        Strahl S = new Strahl (180,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
+        Strahl S = new Strahl (240,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
         
-        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,40,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
-        addObject(new Ablenkspulenpaar(new Vektor(0,1,0),200,110,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,30,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,1,0),200,130,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
         setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
     
     public static Bildpunkt perspective(Vektor v)
     {
-        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + +400;
+        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + 400;
         double y1 = 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
         return new Bildpunkt((int) x1,(int) y1,v);
     }

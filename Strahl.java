@@ -46,15 +46,15 @@ public class Strahl extends Actor
         
         Bildpunkt strahlAnfang = Fernsehröhre.perspective(new Vektor(quelle.positionX,0,0));
         Bildpunkt strahlMitte = Fernsehröhre.perspective(new Vektor(0,0,0));
-        Vektor ergebnis = auslenkungBerechnen();
-        Bildpunkt strahlEnde = Fernsehröhre.perspective(ergebnis);
+        Vektor treffer = auslenkungBerechnen();
+        Bildpunkt strahlEnde = Fernsehröhre.perspective(treffer);
         
         strahlEnde.koordinatenAusgeben(image);
         image.setColor(Color.BLUE);
         
         image.drawLine(strahlAnfang.x,strahlAnfang.y,strahlMitte.x,strahlMitte.y);
         image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
-        schirm.setzePunkt(ergebnis);
+        schirm.setzePunkt(treffer);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit/1000)+ " km/s",10,labelY);
         

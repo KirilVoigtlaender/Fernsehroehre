@@ -36,7 +36,7 @@ public class Ablenkspulenpaar extends Actor
         this.felddurchmesser = felddurchmesser;
         magnetfeldstärke = maxBetrag/2;
         setImage(image);
-        ablenkungberechnen();
+        ablenkungBerechnen();
         draw();
     }
     /**
@@ -46,7 +46,7 @@ public class Ablenkspulenpaar extends Actor
     public void act()
     {
         steuern();
-        ablenkungberechnen();
+        ablenkungBerechnen();
         draw();
     }
     public void draw()
@@ -80,6 +80,8 @@ public class Ablenkspulenpaar extends Actor
         image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
         image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
         image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
+        
+        image.drawImage(drawAusschnitt(),1000,labelY);
     }
     public void steuern()
     {
@@ -100,7 +102,7 @@ public class Ablenkspulenpaar extends Actor
             }
         }
     }
-    public void ablenkungberechnen()
+    public void ablenkungBerechnen()
     {
         bahnradius 
           = strahl.elektronenmasse 
@@ -112,5 +114,19 @@ public class Ablenkspulenpaar extends Actor
           = strahl.quelle.richtungsvektor.
             multiplizieren(-1).
             kreuzprodukt(this.richtungsvektor);
+    }
+    public GreenfootImage drawAusschnitt()
+    {
+        GreenfootImage kreis = new GreenfootImage(90,90);
+        kreis.drawOval(0,0,90,90);
+        kreis.setColor(Color.BLUE);
+        for(int i =0;i<10;i++)
+        {
+            double a = (i* alpha) / 10 ;
+            double x = Math.sin(a) * bahnradius * 90 / felddurchmesser ;
+            double y = 45 - (bahnradius - Math.cos(a) * bahnradius )* 90 / felddurchmesser;
+            kreis.drawOval((int) x,(int) y,2,2);
+        }
+        return kreis;
     }
 }
