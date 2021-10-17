@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.lang.System;
 /**
  * Write a description of class Ablenkspulenpaar here.
  * 
@@ -120,9 +120,11 @@ public class Ablenkspulenpaar extends Actor
         GreenfootImage kreis = new GreenfootImage(90,90);
         kreis.drawOval(0,0,90,90);
         kreis.setColor(Color.BLUE);
+        double slowness = 1E10 / strahl.teilchengeschwindigkeit;
+        double t = (double) System.currentTimeMillis() % slowness / slowness;
         for(int i =0;i<10;i++)
         {
-            double a = (i* alpha) / 10 ;
+            double a = ((i+t)* alpha) / 10 ;
             double x = Math.sin(a) * bahnradius * 90 / felddurchmesser ;
             double y = 45 - (bahnradius - Math.cos(a) * bahnradius )* 90 / felddurchmesser;
             kreis.drawOval((int) x,(int) y,2,2);
