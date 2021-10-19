@@ -81,7 +81,7 @@ public class Ablenkspulenpaar extends Actor
         image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+" in mT" + " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern ,10,labelY);
         image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
         image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
-        image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
+        //image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
         if(läuft)
         {
             image.drawImage(drawAusschnitt(),300,labelY+5);

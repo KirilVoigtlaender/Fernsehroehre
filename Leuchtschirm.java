@@ -46,7 +46,7 @@ public class Leuchtschirm extends Actor
     public void textAusgabe()
     {
         image.setColor(Color.BLACK);
-        image.drawString("Durch das drücken von "+ löschen+ " wird das bild gelöscht",10,labelY);
+        image.drawString("Durch das drücken von "+ löschen+ " wird das Bild gelöscht",10,labelY);
         image.setColor(Color.ORANGE);
     }
 
