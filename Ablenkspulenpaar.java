@@ -84,7 +84,7 @@ public class Ablenkspulenpaar extends Actor
         image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
         if(läuft)
         {
-            image.drawImage(drawAusschnitt(),1000,labelY);
+            image.drawImage(drawAusschnitt(),300,labelY+5);
         }
     }
     public void steuern()

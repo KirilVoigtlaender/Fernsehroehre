@@ -68,15 +68,15 @@ public class Fernsehröhre extends World
         background.drawLine(B12.x,B12.y,B11.x,B11.y);
         background.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(background);
-        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,280,"delete");
+        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,360,"delete");
         addObject(L,600,400);
-        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,205,"Elektronenkanone","+","-",12,16);
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,340,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
-        Strahl S = new Strahl (240,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
+        Strahl S = new Strahl (315,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
         
         addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,30,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
-        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,130,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,200,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
         setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
     
