@@ -20,7 +20,6 @@ public class Elektronenkanone extends Actor
 
     public double spannung;
     private GreenfootImage image = new GreenfootImage(1200,800);
-
     public Elektronenkanone(Vektor richtungsvektor ,double positionX, double abstand,  int labelY ,String name, String erhöhen, String verringern,double minSpannung, double maxSpannung)
     {
         this.richtungsvektor = richtungsvektor;

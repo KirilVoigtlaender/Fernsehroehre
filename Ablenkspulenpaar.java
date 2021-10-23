@@ -24,7 +24,7 @@ public class Ablenkspulenpaar extends Actor
     private double bahnradius; // in mm
     public Vektor ablenkungsrichtung;
     private boolean läuft = false;
-    
+    private double lorentzkraft; // in mN
     public Ablenkspulenpaar(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
@@ -80,7 +80,8 @@ public class Ablenkspulenpaar extends Actor
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
         image.drawString(name + ": "+ Math.round(magnetfeldstärke * 10)/10.0+" mT. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+"\" (Pfeiltasten)." ,10,labelY);
-        image.drawString("Ablenkwinkel: "+ Math.round(180/Math.PI * alpha)+ "°",10,labelY+15);
+        image.drawString("Lorentzkraft pro Elektron: " + Math.round(Math.abs(lorentzkraft * 1E15)) +" aN",10,labelY + 15);
+        image.drawString("Ablenkwinkel: "+ Math.round(180/Math.PI * alpha)+ "°",10,labelY+45);
         image.drawString("Bahnradius: "+Math.round( Math.abs(bahnradius)) + " mm",10 ,labelY+30);
         //image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
         if(läuft)
@@ -109,6 +110,9 @@ public class Ablenkspulenpaar extends Actor
     }
     public void ablenkungBerechnen()
     {
+        lorentzkraft
+          =  strahl.elektronenladung 
+            * strahl.teilchengeschwindigkeit * magnetfeldstärke;
         bahnradius 
           = strahl.elektronenmasse 
             * strahl.teilchengeschwindigkeit 

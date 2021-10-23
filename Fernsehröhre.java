@@ -68,22 +68,23 @@ public class Fernsehröhre extends World
         background.drawLine(B12.x,B12.y,B11.x,B11.y);
         background.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(background);
-        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,360,"delete");
+        
+        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,350,"delete");
         addObject(L,600,400);
-        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,315,"Elektronenkanone","+","-",12,16);
+        Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,30,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
-        Strahl S = new Strahl (340,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
+        Strahl S = new Strahl (45,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
         
-        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,30,"Senkrechtes Spulenpaar","up","down",5,S,30),600,400);
-        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,200,"Waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,90,"Senkrechtes Spulenpaar","up","down",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,220,"Waagerechtes Spulenpaar","right","left",5,S,30),600,400);
         setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
     
     public static Bildpunkt perspective(Vektor v)
     {
-        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + 450;
-        double y1 = 500-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
+        double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + 470;
+        double y1 = 520-((Math.sqrt(30)/30)*v.x + (Math.sqrt(30)/15)*v.y + (Math.sqrt(30)/6)*v.z );
         return new Bildpunkt((int) x1,(int) y1,v);
     }
 }
