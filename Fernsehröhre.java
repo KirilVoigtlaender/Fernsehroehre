@@ -75,8 +75,8 @@ public class Fernsehröhre extends World
         Strahl S = new Strahl (340,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
         
-        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,30,"senkrechtes Spulenpaar","up","down",5,S,30),600,400);
-        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,200,"waagerechtes Spulenpaar","right","left",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,30,"Senkrechtes Spulenpaar","up","down",5,S,30),600,400);
+        addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,200,"Waagerechtes Spulenpaar","right","left",5,S,30),600,400);
         setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
     

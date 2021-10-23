@@ -102,7 +102,7 @@ public class Elektronenkanone extends Actor
             new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
 
         
-        image.drawString(name + ": "+ String.valueOf(spannung)+" kV"+ " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern,10,labelY);
+        image.drawString(name + ": "+ Math.round(spannung* 10)/ 10.0+" kV. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+"\".",10,labelY);
 
     }
 

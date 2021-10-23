@@ -24,6 +24,7 @@ public class Ablenkspulenpaar extends Actor
     private double bahnradius; // in mm
     public Vektor ablenkungsrichtung;
     private boolean läuft = false;
+    
     public Ablenkspulenpaar(Vektor richtungsvektor , double abstand,  int labelY ,String name, String erhöhen, String verringern, double maxBetrag, Strahl strahl,double felddurchmesser)
     {
         this.richtungsvektor = richtungsvektor;
@@ -78,9 +79,9 @@ public class Ablenkspulenpaar extends Actor
         image.setColor(Color.YELLOW);
         image.drawLine(polPositiv.x,polPositiv.y,polNegativ.x,polNegativ.y);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(magnetfeldstärke)+" in mT" + " um zu erhöhen drückt man: "+erhöhen+" ; um zu verringern drückt man: "+verringern ,10,labelY);
-        image.drawString("Der Winkel alpha beträgt = "+180/Math.PI * alpha + " in °",10,labelY+15);
-        image.drawString("Der Radius beträgt = "+bahnradius + " mm",10 ,labelY+30);
+        image.drawString(name + ": "+ Math.round(magnetfeldstärke * 10)/10.0+" mT. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+"\" (Pfeiltasten)." ,10,labelY);
+        image.drawString("Ablenkwinkel: "+ Math.round(180/Math.PI * alpha)+ "°",10,labelY+15);
+        image.drawString("Bahnradius: "+Math.round( Math.abs(bahnradius)) + " mm",10 ,labelY+30);
         //image.drawString("Ablenkungsrichtung : "+ablenkungsrichtung.x + ", "+ablenkungsrichtung.y + " , "+ablenkungsrichtung.z,10,labelY+45);
         if(läuft)
         {

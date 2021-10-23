@@ -56,7 +56,7 @@ public class Strahl extends Actor
         image.drawLine(strahlMitte.x,strahlMitte.y,strahlEnde.x,strahlEnde.y);
         schirm.setzePunkt(treffer);
         image.setColor(Color.BLACK);
-        image.drawString(name + ": "+ String.valueOf(teilchengeschwindigkeit/1000)+ " km/s",10,labelY);
+        image.drawString(name + ": "+ Math.round(teilchengeschwindigkeit/1000) + " km/s",10,labelY);
         
     }
     public void geschwindigkeitBerechnen()
