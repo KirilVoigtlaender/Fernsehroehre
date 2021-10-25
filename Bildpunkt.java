@@ -21,10 +21,10 @@ public class Bildpunkt
         this.y = y;
         this.original = original;
     }
-    
+
     public void koordinatenAusgeben(GreenfootImage image)
     {
         //image.drawString(String.valueOf(original.x) + "," + String.valueOf(original.y) + "," + String.valueOf(original.z),x,y);
     }
-    
+
 }

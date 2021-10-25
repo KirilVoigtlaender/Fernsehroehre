@@ -49,9 +49,9 @@ public class Fernsehröhre extends World
         B11.koordinatenAusgeben(background);
         Bildpunkt B12 = perspective(new Vektor(bildschirmabstand,bildschirmbreite,-bildschirmhöhe));
         B12.koordinatenAusgeben(background);
-        
+
         foreground.drawPolygon(new int []{B3.x,B4.x,B1.x,B7.x,B10.x,B9.x,B11.x,B6.x},
-        new int[]{B3.y,B4.y,B1.y,B7.y,B10.y,B9.y,B11.y,B6.y},8);
+            new int[]{B3.y,B4.y,B1.y,B7.y,B10.y,B9.y,B11.y,B6.y},8);
         foreground.drawLine(B9.x,B9.y,B8.x,B8.y);
         foreground.drawLine(B1.x,B1.y,B2.x,B2.y);
         foreground.drawLine(B3.x,B3.y,B2.x,B2.y);
@@ -59,7 +59,7 @@ public class Fernsehröhre extends World
         foreground.drawLine(B8.x,B8.y,B7.x,B7.y);
         foreground.drawLine(B8.x,B8.y,B6.x,B6.y);
         addObject(new Gehäuse(foreground),600,400);
-        
+
         background.setColor(Color.LIGHT_GRAY);
         background.drawLine(B5.x,B5.y,B6.x,B6.y);
         background.drawLine(B5.x,B5.y,B7.x,B7.y);
@@ -68,19 +68,19 @@ public class Fernsehröhre extends World
         background.drawLine(B12.x,B12.y,B11.x,B11.y);
         background.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(background);
-        
+
         Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,350,"delete");
         addObject(L,600,400);
         Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,30,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
         Strahl S = new Strahl (45,"Strahlgeschwindigkeit",E,L,bildschirmabstand);
         addObject(S,600,400);
-        
+
         addObject(new Ablenkspulenpaar(new Vektor(0,0,1),200,90,"Senkrechtes Spulenpaar","up","down",5,S,30),600,400);
         addObject(new Ablenkspulenpaar(new Vektor(0,-1,0),200,220,"Waagerechtes Spulenpaar","right","left",5,S,30),600,400);
         setPaintOrder(Gehäuse.class,Leuchtschirm.class,Strahl.class,Ablenkspulenpaar.class,Elektronenkanone.class);
     }
-    
+
     public static Bildpunkt perspective(Vektor v)
     {
         double x1 = (2*Math.sqrt(5)/5)*v.x + (-Math.sqrt(5)/5)*v.y + 470;

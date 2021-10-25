@@ -75,7 +75,9 @@ public class Strahl extends Actor
         Vektor ergebnisvektor = new Vektor(bildschirmabstand,0,0);
         for(Ablenkspulenpaar m : getWorld().getObjects(Ablenkspulenpaar.class) )
         {
-            ergebnisvektor = ergebnisvektor.addieren( m.ablenkungsrichtung.multiplizieren(bildschirmabstand*Math.tan(m.alpha)));
+            ergebnisvektor
+                = ergebnisvektor.addieren(m.ablenkungsrichtung.
+                  multiplizieren(bildschirmabstand * Math.tan(m.alpha)));
         }
         return ergebnisvektor;
     }

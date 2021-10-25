@@ -17,7 +17,7 @@ public class Ablenkspulenpaar extends Actor
     private double maxBetrag;
     private Strahl strahl;
     private double felddurchmesser;// in mm
-    
+
     private double magnetfeldstärke; // in mT
     private GreenfootImage image = new GreenfootImage(1200,800);
     public double alpha;
@@ -41,6 +41,7 @@ public class Ablenkspulenpaar extends Actor
         ablenkungBerechnen();
         draw();
     }
+
     /**
      * Act - do whatever the Ablenkspulenpaar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -52,6 +53,7 @@ public class Ablenkspulenpaar extends Actor
         läuft = true;
         draw();
     }
+
     public void draw()
     {
         Color farbePolPositiv;
@@ -73,7 +75,7 @@ public class Ablenkspulenpaar extends Actor
         }
         image.setColor(farbePolPositiv);
         image.fillOval(polPositiv.x-(int)felddurchmesser/2,polPositiv.y-(int)felddurchmesser/2,(int)felddurchmesser,(int)felddurchmesser);
-        
+
         image.setColor(farbePolNegativ);
         image.fillOval(polNegativ.x-(int)felddurchmesser/2,polNegativ.y-(int)felddurchmesser/2,(int)felddurchmesser,(int)felddurchmesser);
         image.setColor(Color.YELLOW);
@@ -89,6 +91,7 @@ public class Ablenkspulenpaar extends Actor
             image.drawImage(drawAusschnitt(),300,labelY+5);
         }
     }
+
     public void steuern()
     {
         if(Greenfoot.isKeyDown(erhöhen))
@@ -101,29 +104,32 @@ public class Ablenkspulenpaar extends Actor
         }
         if(Greenfoot.isKeyDown(verringern))
         {
-           magnetfeldstärke -= maxBetrag/100;
-           if(magnetfeldstärke < -maxBetrag)
+            magnetfeldstärke -= maxBetrag/100;
+            if(magnetfeldstärke < -maxBetrag)
             {
                 magnetfeldstärke = -maxBetrag;
             }
         }
     }
+
     public void ablenkungBerechnen()
     {
         lorentzkraft
-          =  strahl.elektronenladung 
+            = strahl.elektronenladung 
             * strahl.teilchengeschwindigkeit * magnetfeldstärke;
         bahnradius 
-          = strahl.elektronenmasse 
+            = strahl.elektronenmasse 
             * strahl.teilchengeschwindigkeit 
-            / (strahl.elektronenladung * magnetfeldstärke/1000)
+            / (strahl.elektronenladung * magnetfeldstärke / 1000)
             * 1000;
-        alpha = 2 * Math.atan(felddurchmesser/ (2 *bahnradius ));
+        alpha 
+            = 2 * Math.atan(felddurchmesser / (2 * bahnradius));
         ablenkungsrichtung
-          = strahl.quelle.richtungsvektor.
-            multiplizieren(-1).
-            kreuzprodukt(this.richtungsvektor);
+            = strahl.quelle.richtungsvektor.
+              multiplizieren(-1).
+              kreuzprodukt(this.richtungsvektor);
     }
+
     public GreenfootImage drawAusschnitt()
     {
         int kreisgröße = 100;

@@ -19,14 +19,17 @@ public class Vektor
         this.y = y;
         this.z = z;
     }
+
     public Vektor multiplizieren(double zahl)
     {
         return new Vektor(x*zahl, y*zahl, z*zahl);
     }
+
     public Vektor addieren(Vektor v)
     {
         return new Vektor(x + v.x, y + v.y, z + v.z);
     }
+
     public Vektor kreuzprodukt(Vektor v)
     {
         return new Vektor(y * v.z - z * v.y , z * v.x - x * v.z , x * v.y - y * v.x);

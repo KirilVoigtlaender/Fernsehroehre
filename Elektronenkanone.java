@@ -80,7 +80,7 @@ public class Elektronenkanone extends Actor
         image.drawPolygon(new int[] { polNegativ1.x, polNegativ2.x, polNegativ3.x, polNegativ4.x },
             new int[] { polNegativ1.y, polNegativ2.y, polNegativ3.y, polNegativ4.y },
             4); 
-            
+
         Bildpunkt Kanone1 = Fernsehröhre.perspective(new Vektor(-200,5,5));
         Bildpunkt Kanone2 = Fernsehröhre.perspective(new Vektor(-200,5,-5));
         Bildpunkt Kanone3 = Fernsehröhre.perspective(new Vektor(-200,-5,-5));
@@ -89,7 +89,7 @@ public class Elektronenkanone extends Actor
         Bildpunkt Kanone6 = Fernsehröhre.perspective(new Vektor(positionX,5,-5));
         Bildpunkt Kanone7 = Fernsehröhre.perspective(new Vektor(positionX,-5,5));
         Bildpunkt Kanone8 = Fernsehröhre.perspective(new Vektor(positionX,5,5));
-        
+
         image.setColor(Color.BLACK);
         image.fillPolygon(new int[]{Kanone1.x,Kanone2.x,Kanone6.x,Kanone8.x,},
             new int[]{Kanone1.y,Kanone2.y,Kanone6.y,Kanone8.y},4);
@@ -100,11 +100,8 @@ public class Elektronenkanone extends Actor
         image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
             new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
 
-        
         image.drawString(name + ": "+ Math.round(spannung* 10)/ 10.0+" kV. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+"\".",10,labelY);
-
     }
-
     public void steuern()
     {
         if(Greenfoot.isKeyDown(erhöhen))
