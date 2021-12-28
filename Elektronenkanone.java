@@ -100,7 +100,7 @@ public class Elektronenkanone extends Actor
         image.fillPolygon(new int[]{Kanone3.x,Kanone2.x,Kanone6.x,Kanone5.x,},
             new int[]{Kanone3.y,Kanone2.y,Kanone6.y,Kanone5.y,},4);
 
-        image.drawString(name + ": "+ Math.round(spannung* 10)/ 10.0+" kV. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+" \" (auf der Tastatur).",10,labelY);
+        image.drawString(name + ": "+ Math.round(spannung* 10)/ 10.0+" kV. Um zu erhöhen, drückt man \""+erhöhen+"\", um zu verringern, drückt man \""+verringern+"\" (auf der Tastatur).",10,labelY);
     }
     public void steuern()
     {
