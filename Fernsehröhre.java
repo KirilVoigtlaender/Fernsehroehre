@@ -69,7 +69,7 @@ public class Fernsehröhre extends World
         background.drawLine(B12.x,B12.y,B10.x,B10.y);
         setBackground(background);
 
-        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,350,"delete");
+        Leuchtschirm L = new Leuchtschirm(bildschirmbreite,bildschirmhöhe,350,"space");
         addObject(L,600,400);
         Elektronenkanone E = new Elektronenkanone(new Vektor(1,0,0),-180,35,30,"Elektronenkanone","+","-",12,16);
         addObject(E,600,400);
